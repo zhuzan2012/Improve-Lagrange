@@ -1,0 +1,48 @@
+function Lagrange2(X,Y,H)
+m=length(X);
+n=length(Y);
+if m ~= n , 
+    error('X and y must be equal in length'); 
+end;
+Dd = 0;
+DH = 0;
+for i = 1 : n              %Calculating cumulative horizontal distance¦¤D
+    if i < n
+            dd = sqrt((X(i+1)-X(i))^2 + (Y(i+1)-Y(i))^2 );
+    end
+    Dd = Dd + dd;
+    fprintf('%d\n',Dd);
+end
+for i = 2 : n             %Calculate accumulative height difference¦¤h                          
+    if i < n
+            Dh = H(i)-H(i-1);
+    end
+    DH = DH + Dh;
+    fprintf('%d\n',DH);
+end
+------------------------------------------
+
+nction yi = Lagrange1(x,y,xi)                     %Planar coordinate interpolation calculation                
+m=length(x);
+n=length(y);
+if m ~= n 
+    error('X and y must be equal in length'); 
+end
+s=0;
+for i=1 : n
+z=ones(1,length(xi));
+    for j=1 : n
+        if j ~= i
+            z=z.*(xi-x(j))./(x(i)-x(j));
+        end
+    end
+    s=s+z*y(i);
+end
+yi=s;            
+    if i < n
+            Dh = H(i)-H(i-1);
+    end
+    DH = DH + Dh;
+    fprintf('%d\n',DH);
+end
+yi = s
